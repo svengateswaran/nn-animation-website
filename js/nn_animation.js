@@ -7,10 +7,22 @@
     initAnimation();
     addListeners();
 
+    function getPos(el) {
+        // yay readability
+        for (var lx=0, ly=0;
+             el != null;
+             lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+        return {x: lx,y: ly};
+    }
+
     function initHeader() {
         width = window.innerWidth - 10;
         height = window.innerHeight - 10;
         target = {x: width/2, y: height/2};
+
+        personal_info = document.getElementById('personal-info');
+        target.x = getPos(personal_info).x + personal_info.offsetWidth/2;
+        target.y = getPos(personal_info).y + personal_info.offsetHeight/2;
 
         largeHeader = document.getElementById('large-header');
         largeHeader.style.height = height+'px';
@@ -68,6 +80,9 @@
         }
     }
 
+    /*
+     * Disable move animation w.r.t to Cursor
+     *
     // Event handling
     function addListeners() {
         if(!('ontouchstart' in window)) {
@@ -90,7 +105,7 @@
         target.x = posx;
         target.y = posy;
     }
-
+*/
     function scrollCheck() {
         if(document.body.scrollTop > height) animateHeader = false;
         else animateHeader = true;

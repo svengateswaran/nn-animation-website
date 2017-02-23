@@ -4,7 +4,7 @@
 
     // Main
     initHeader();
-    initAnimation();
+   // initAnimation();
     addListeners();
 
     function getPos(el) {
@@ -20,6 +20,7 @@
         height = window.innerHeight - 10;
         target = {x: width/2, y: height/2};
 
+
         personal_info = document.getElementById('personal-info');
         target.x = getPos(personal_info).x + personal_info.offsetWidth/2;
         target.y = getPos(personal_info).y + personal_info.offsetHeight/2;
@@ -34,10 +35,13 @@
 
         // create points
         points = [];
-        for(var x = 0; x < width; x = x + width/20) {
-            for(var y = 0; y < height; y = y + height/20) {
-                var px = x + Math.random()*width/20;
-                var py = y + Math.random()*height/20;
+
+        points_gap = 20;
+
+        for(var x = 0; x < width; x = x + width/points_gap) {
+            for(var y = 0; y < height; y = y + height/points_gap) {
+                var px = x + Math.random()*width/points_gap;
+                var py = y + Math.random()*height/points_gap;
                 var p = {x: px, originX: px, y: py, originY: py };
                 points.push(p);
             }
@@ -75,8 +79,12 @@
 
         // assign a circle to each point
         for(var i in points) {
-            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,0,1)');
             points[i].circle = c;
+            points[i].active = 0.1;
+            points[i].circle.active = 0.1;
+            drawLines(points[i]);
+            points[i].circle.draw();
         }
     }
 
@@ -129,9 +137,11 @@
 
     function animate() {
         if(animateHeader) {
+        
             ctx.clearRect(0,0,width,height);
             for(var i in points) {
                 // detect points in range
+
                 if(Math.abs(getDistance(target, points[i])) < 4000) {
                     points[i].active = 0.3;
                     points[i].circle.active = 0.6;
@@ -168,7 +178,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(255, 0, 0,'+ p.active+')';
+            ctx.strokeStyle = 'rgba(255, 0, 0,1)';
             ctx.stroke();
         }
     }
@@ -188,7 +198,7 @@
             ctx.beginPath();
             ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
             /* color change from 156,217,249 to 0, 0, 128 */
-            ctx.fillStyle = 'rgba(255, 0, 0,'+ _this.active+')';
+            ctx.fillStyle = 'rgba(0, 0, 255,1)';
             ctx.fill();
         };
     }

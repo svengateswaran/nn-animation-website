@@ -45,6 +45,8 @@ border-radius : 10px;
     /* you need to match the shadow color to your background or image border for the desired effect*/
     box-shadow: 0 0 20px 20px #FFF inset;
     background-size: 100% 100%;
+    border-radius : 10px;
+    background-color: #CCCA;
 }
 
 a {
@@ -92,6 +94,8 @@ a:focus {
   text-align: center;
   overflow:auto;
   width: 390px;
+  background:#FFFA;
+  border-radius:8px;
 }
 
 .table a {

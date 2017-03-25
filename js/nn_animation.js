@@ -4,7 +4,7 @@
 
     // Main
     initHeader();
-   // initAnimation();
+    initAnimation();
     addListeners();
 
     function getPos(el) {
@@ -16,14 +16,14 @@
     }
 
     function initHeader() {
-        width = window.innerWidth - 10;
-        height = window.innerHeight - 10;
+        width = window.innerWidth - 2.0001;
+        height = window.innerHeight - 2.0001;
         target = {x: width/2, y: height/2};
 
 
         personal_info = document.getElementById('personal-info');
-        target.x = getPos(personal_info).x + personal_info.offsetWidth/2;
-        target.y = getPos(personal_info).y + personal_info.offsetHeight/2;
+//        target.x = getPos(personal_info).x + personal_info.offsetWidth/2;
+//        target.y = getPos(personal_info).y + personal_info.offsetHeight/2;
 
         largeHeader = document.getElementById('large-header');
         largeHeader.style.height = height+'px';
@@ -79,7 +79,7 @@
 
         // assign a circle to each point
         for(var i in points) {
-            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,0,1)');
+            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,0, 0.3)');
             points[i].circle = c;
             points[i].active = 0.1;
             points[i].circle.active = 0.1;
@@ -90,7 +90,7 @@
 
     /*
      * Disable move animation w.r.t to Cursor
-     *
+     */
     // Event handling
     function addListeners() {
         if(!('ontouchstart' in window)) {
@@ -113,7 +113,6 @@
         target.x = posx;
         target.y = posy;
     }
-*/
     function scrollCheck() {
         if(document.body.scrollTop > height) animateHeader = false;
         else animateHeader = true;
@@ -136,19 +135,21 @@
     }
 
     function animate() {
+    
+        var range = 50000;
         if(animateHeader) {
         
             ctx.clearRect(0,0,width,height);
             for(var i in points) {
                 // detect points in range
 
-                if(Math.abs(getDistance(target, points[i])) < 4000) {
+                if(Math.abs(getDistance(target, points[i])) < range) {
                     points[i].active = 0.3;
                     points[i].circle.active = 0.6;
-                } else if(Math.abs(getDistance(target, points[i])) < 20000) {
+                } else if(Math.abs(getDistance(target, points[i])) < range * 5) {
                     points[i].active = 0.1;
                     points[i].circle.active = 0.3;
-                } else if(Math.abs(getDistance(target, points[i])) < 40000) {
+                } else if(Math.abs(getDistance(target, points[i])) < range * 15) {
                     points[i].active = 0.02;
                     points[i].circle.active = 0.1;
                 } else {
@@ -178,7 +179,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(255, 0, 0,1)';
+            ctx.strokeStyle = 'rgba(128, 128, 128, ' + p.active + ')';
             ctx.stroke();
         }
     }
@@ -198,7 +199,7 @@
             ctx.beginPath();
             ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
             /* color change from 156,217,249 to 0, 0, 128 */
-            ctx.fillStyle = 'rgba(0, 0, 255,1)';
+            ctx.fillStyle = 'rgba(255, 0, 0,' + _this.active + ')';
             ctx.fill();
         };
     }

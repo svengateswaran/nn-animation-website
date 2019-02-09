@@ -37,9 +37,9 @@ border-radius : 10px;
 
 .me-image{
     background-image: url('../images/profile.png');
-    height:550px;
+    height:520px;
     width:600px;
-    opacity:0.85;
+    opacity:0.95;
     /* you need to match the shadow color to your background or image border for the desired effect*/
 /*    box-shadow: 0 0 20px 20px #FFF inset;*/
     background-size: 100% ;

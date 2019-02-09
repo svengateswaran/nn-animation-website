@@ -6,7 +6,7 @@ body {
     line-height: 24px;
     letter-spacing: 1px;
     height: 100%;
-    background:#FFF;
+    background:#000;
     background-repeat: no-repeat;
 }
 
@@ -95,12 +95,12 @@ a:focus {
 }
 
 .table a {
-  color: #000;
+  color: #fff;
 }
 
 .table a:hover {
   color: #f00;
-  opacity:0.6;
+  opacity:0.8;
 }
 
 .table > tbody > tr > td {
@@ -120,7 +120,7 @@ a:focus {
 
 tr > td:nth-child(1){
   font-size: 19px;
-  color: #000;
+  color: #fff;
   width: 600px;
 }
 

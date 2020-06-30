@@ -15,6 +15,11 @@
         return {x: lx,y: ly};
     }
 
+    function vw(v) {
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        return (v * w) / 100;
+    }
+
     function initHeader() {
         width = window.innerWidth - 10;
         height = window.innerHeight - 10;
@@ -36,8 +41,7 @@
         // create points
         points = [];
 
-        points_gap = parseInt(((width*height)/90000)*1.5);
-        console.log(width*height);
+        points_gap = parseInt(vw(1));
         console.log(points_gap);
 
         for(var x = 0; x < width; x = x + width/points_gap) {

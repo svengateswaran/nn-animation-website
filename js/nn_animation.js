@@ -16,8 +16,8 @@
     }
 
     function initHeader() {
-        width = window.innerWidth - 2.0001;
-        height = window.innerHeight - 2.0001;
+        width = window.innerWidth - 10;
+        height = window.innerHeight - 10;
         target = {x: width/2, y: height/2};
 
 
@@ -36,7 +36,9 @@
         // create points
         points = [];
 
-        points_gap = 20;
+        points_gap = parseInt(((width*height)/90000)*1.5);
+        console.log(width*height);
+        console.log(points_gap);
 
         for(var x = 0; x < width; x = x + width/points_gap) {
             for(var y = 0; y < height; y = y + height/points_gap) {
@@ -136,7 +138,7 @@
 
     function animate() {
     
-        var range = 50000;
+        var range = 10000;
         if(animateHeader) {
         
             ctx.clearRect(0,0,width,height);
@@ -144,8 +146,8 @@
                 // detect points in range
 
                 if(Math.abs(getDistance(target, points[i])) < range) {
-                    points[i].active = 0.3;
-                    points[i].circle.active = 0.6;
+                    points[i].active = 0.25;
+                    points[i].circle.active = 0.5;
                 } else if(Math.abs(getDistance(target, points[i])) < range * 5) {
                     points[i].active = 0.1;
                     points[i].circle.active = 0.3;
@@ -208,5 +210,5 @@
     function getDistance(p1, p2) {
         return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
     }
-    
+
 })();

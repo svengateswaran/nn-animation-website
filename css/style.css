@@ -1,66 +1,55 @@
 /* Global Style */
 
-body {
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 1px;
-    height: 100%;
-    background:#000;
-    background-repeat: no-repeat;
+html {
+  height: 100%;
+  width: 100%;
 }
 
-html,
 body {
-    height: 100%
+  line-height: 24px;
+  letter-spacing: 1px;
+  height: 100%;
+  width: 100%;
+  background:#fff;
+  background-repeat: no-repeat;
+  font-family: "Trebuchet MS";
 }
 
 ::selection {
-    background-color: #E00;
-    color: #ffffff;
+  background-color: #333;
+  color: #ffffff;
 }
 
 ::-moz-selection {
-    background-color: #E00;
-    color: #ffffff;
-}
-a {
-    text-decoration: none;
-}
-
-img {
--moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
--webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
-box-shadow: 10px 20px 30px rgba(0,0,0,.5);
-border-radius : 10px;
-}
-
-.me-image{
-    background-image: url('../images/profile.png');
-    height:520px;
-    width:600px;
-    opacity:0.95;
-    /* you need to match the shadow color to your background or image border for the desired effect*/
-/*    box-shadow: 0 0 20px 20px #FFF inset;*/
-    background-size: 100% ;
-    border-radius : 10px;
+  background-color: #333;
+  color: #ffffff;
 }
 
 a {
-    color: #4c9cef;
+  text-decoration: none;
+  color: #4c9cef;
 }
 
 a:hover,
 a:active,
 a:focus {
-    color: #f7639a;
-    text-decoration: none;
+  color: #f7639a;
+  text-decoration: none;
   outline: none;
 }
 
+#me-image{
+  background-image: url('../images/profile.png');
+  height: 300px;
+  width: 300px;
+  opacity: 0.95;
+  background-size: 100% ;
+  border-radius : 50%;
+  border: 2px solid #F00;
+  margin:auto;
+}
 
 /* Home Section and Navigation Menu */
-
 .outer {
     display: table;
     position: absolute;
@@ -91,6 +80,7 @@ a:focus {
   text-align: center;
   overflow:auto;
   border-radius:8px;
+  border:0px;
 }
 
 .table a {
@@ -102,27 +92,39 @@ a:focus {
   opacity:0.8;
 }
 
+table {
+  text-align:center;
+}
+.table {
+  border:0px !important;
+}
 .table > tbody > tr > td {
-  padding: 10px;
   border-top : 0px;
-  font-family: 'Trebuchet MS';
+}
+
+#td_image {
+  padding: 2%;
 }
 
 .table tr > td {
   padding: 11px 13px;
 }
 
-.table > tbody > tr:first-child > td {
+#name {
   font-weight: bold;
   font-size:25px;
 }
 
 tr > td:nth-child(1){
-  font-size: 19px;
-  color: #fff;
+  font-size: 20px;
+  color: #000;
   width: 600px;
 }
 
+.highlight {
+  background-color:#F00;
+  color:#fff;
+}
 @media only screen and (min-width: 767px) and (max-width: 991px) {
   .margin-left-setting {
     margin-left: 0px !important;
